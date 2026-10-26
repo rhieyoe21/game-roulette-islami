@@ -42,7 +42,7 @@
       id: "menolong-teman",
       condition: "Menolong Teman",
       shortCondition: "Menolong",
-      situation: "Teman Menjatuhkan Buku",
+      situation: "Membantu Teman yang Menjatuhkan Buku",
       wheelLines: ["Menolong", "Teman"],
       icon: "🤝",
       color: "#f4a7bc",
@@ -578,7 +578,7 @@
     promptIcon.textContent = selected.icon;
     promptKicker.textContent = "Roda berhenti di";
     conditionTitle.textContent = selected.condition;
-    instructionText.textContent = `Semua kartu terbuka. Pilih situasi yang paling cocok dengan ${selected.condition}.`;
+    instructionText.textContent = `Pilih situasi yang paling cocok dengan ${selected.condition}.`;
 
     const choices = makeChoices(selected);
 

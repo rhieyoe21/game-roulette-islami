@@ -1,0 +1,11 @@
+# Kredensial tidak boleh masuk repository
+.env
+.env.*
+!.env.example
+
+# Referensi gambar hanya untuk proses generate lokal
+assets/reference/
+
+# Artefak Python
+__pycache__/
+*.pyc

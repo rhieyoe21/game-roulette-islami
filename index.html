@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8e8">
+  <meta name="description" content="Roda Kebaikan Islami: putar roda, kenali tujuh kebaikan sehari-hari, dan temukan kartu situasi yang tepat.">
+  <title>Roda Kebaikan Islami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#game">Lewati ke permainan</a>
+
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-sign">
+        <div class="hero-mark" aria-hidden="true">
+          <svg viewBox="0 0 96 96" role="presentation">
+            <path d="M18 74V50c0-13 9-23 21-23h18c12 0 21 10 21 23v24Z" fill="#f4c95d" stroke="#5c3a28" stroke-width="3"/>
+            <path d="M38 49c0-9 4-16 10-16s10 7 10 16v25H38Z" fill="#fff6df" stroke="#5c3a28" stroke-width="3"/>
+            <path d="M48 24c-8 0-14 5-15 12 4-3 8-4 13-4 2 0 4 0 6 1-2-4-2-6-4-9Z" fill="#f4c95d" stroke="#5c3a28" stroke-width="3" stroke-linejoin="round"/>
+            <rect x="14" y="58" width="10" height="20" rx="4" fill="#fff6df" stroke="#5c3a28" stroke-width="3"/>
+            <rect x="72" y="58" width="10" height="20" rx="4" fill="#fff6df" stroke="#5c3a28" stroke-width="3"/>
+            <path d="M18 78h60" stroke="#5c3a28" stroke-width="4" stroke-linecap="round"/>
+            <path d="M48 18v5M44 21h8" stroke="#5c3a28" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="48" cy="60" r="4" fill="#f4c95d"/>
+          </svg>
+        </div>
+
+        <div class="hero-copy">
+          <p class="hero-kicker">Main sambil belajar</p>
+          <h1>
+            <span class="title-roda">Roda</span>
+            <span class="title-kebaikan">Kebaikan</span>
+            <span class="title-islami">Islami</span>
+          </h1>
+          <p class="hero-sub">Putar roda, temukan situasinya, lalu pilih kartu yang tepat.</p>
+          <div class="hero-meta">
+            <div class="score-pill" id="scorePill" aria-label="Bintang yang dikumpulkan">
+              <span class="score-star" aria-hidden="true">★</span>
+              <span class="score-number" id="scoreValue">0</span>
+              <span class="score-label">bintang</span>
+            </div>
+            <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="true" aria-label="Matikan efek suara">
+              <span class="sound-icon" aria-hidden="true">
+                <svg class="sound-icon-on" viewBox="0 0 24 24" role="presentation">
+                  <path d="M4 9h4l5-4v14l-5-4H4Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                <svg class="sound-icon-off" viewBox="0 0 24 24" role="presentation" hidden>
+                  <path d="M4 9h4l5-4v14l-5-4H4Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="m16 9 5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="sound-label" id="soundLabel">Suara aktif</span>
+            </button>
+            <button class="reset-button" id="resetButton" type="button" aria-label="Mulai ulang permainan dan hapus semua bintang">
+              <span class="reset-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="presentation">
+                  <path d="M4 11a8 8 0 1 1 2.3 6.3M4 4v7h7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>Reset</span>
+            </button>
+            <span class="hero-note">7 kebaikan sehari-hari</span>
+          </div>
+        </div>
+
+        <div class="hero-side" aria-hidden="true">
+          <svg class="hero-moon" viewBox="0 0 90 90" role="presentation">
+            <path d="M60 17c-15 3-25 17-23 32 2 14 14 24 28 24-9 7-22 8-33 2C17 67 11 49 19 33 27 17 44 10 60 17Z" fill="#f4c95d" stroke="#5c3a28" stroke-width="3" stroke-linejoin="round"/>
+          </svg>
+          <span class="hero-star star-one">★</span>
+          <span class="hero-star star-two">★</span>
+          <span class="hero-star star-three">★</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="game-layout" id="game">
+      <section class="wheel-panel" aria-labelledby="wheel-heading">
+        <div class="section-heading">
+          <p class="step-label"><span class="step-number">1</span> Putar roda</p>
+          <h2 id="wheel-heading">Kebaikan apa hari ini?</h2>
+        </div>
+
+        <div class="wheel-stage">
+          <div class="pointer-wrap" aria-hidden="true">
+            <svg class="wheel-pointer" viewBox="0 0 64 80" role="presentation">
+              <path d="M32 76 8 34a15 15 0 0 1 13-22h22a15 15 0 0 1 13 22Z" fill="#e9553f" stroke="#5c3a28" stroke-width="4" stroke-linejoin="round"/>
+              <circle cx="32" cy="24" r="7" fill="#fff7e3" stroke="#5c3a28" stroke-width="3"/>
+            </svg>
+          </div>
+
+          <div class="wheel-wrap">
+            <div class="wheel" id="wheel">
+              <div class="wheel-disc" id="wheelDisc" aria-hidden="true"></div>
+              <div class="wheel-shine" aria-hidden="true"></div>
+              <div class="wheel-labels" id="wheelLabels" aria-hidden="true"></div>
+              <button class="wheel-center" id="spinButton" type="button" aria-describedby="spinHelp">
+                <span class="wheel-center-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="presentation">
+                    <path d="M20 11a8 8 0 1 0-2.34 5.66M20 4v7h-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="wheel-center-text" id="spinButtonText">Putar</span>
+              </button>
+            </div>
+
+            <div class="wheel-stand" aria-hidden="true">
+              <span class="stand-post"></span>
+              <span class="stand-base"></span>
+            </div>
+          </div>
+        </div>
+
+        <p class="hint" id="spinHelp">Tekan tombol di tengah roda untuk mulai.</p>
+        <p class="visually-hidden" id="liveStatus" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="board-panel" aria-labelledby="board-heading">
+        <div class="board-heading">
+          <div>
+            <p class="step-label"><span class="step-number">2</span> Pilih kartu</p>
+            <h2 id="board-heading">Kartu situasi</h2>
+          </div>
+          <span class="round-badge is-ready" id="roundBadge">Siap bermain</span>
+        </div>
+
+        <div class="board">
+          <div class="idle-state" id="idleState">
+            <div class="mini-deck" aria-hidden="true">
+              <span class="mini-card mini-card-one"></span>
+              <span class="mini-card mini-card-two"></span>
+              <span class="mini-card mini-card-three">
+                <span class="mini-card-star">★</span>
+              </span>
+            </div>
+            <div class="idle-copy">
+              <p class="idle-title">Kartu situasi menantimu</p>
+              <p class="idle-text">Putar roda dulu, ya. Nanti tiga kartu situasi terbuka muncul di sini.</p>
+            </div>
+          </div>
+
+          <div class="round-state" id="roundState" hidden>
+            <div class="prompt-card" id="promptCard">
+              <div class="prompt-icon" id="promptIcon" aria-hidden="true">★</div>
+              <div class="prompt-copy">
+                <p class="prompt-kicker" id="promptKicker">Roda berhenti di</p>
+                <h3 class="prompt-title" id="conditionTitle">Bersiap…</h3>
+                <p class="prompt-text" id="instructionText">Pilih satu kartu situasi yang paling cocok.</p>
+              </div>
+            </div>
+
+            <div class="cards-grid" id="cardsGrid" aria-label="Pilihan kartu situasi"></div>
+
+            <div class="round-actions" id="roundActions" hidden>
+              <p class="round-note" id="roundNote">Hebat! Kamu menemukan pasangan yang tepat.</p>
+              <button class="primary-button" id="playAgainButton" type="button">
+                <span>Putar lagi</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="board-footer">
+          <span class="footer-mark" aria-hidden="true">✦</span>
+          <p>Baca situasinya, lalu pilih kartu yang cocok dengan kebaikan dari roda.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Roda Kebaikan Islami · belajar kebaikan dengan cara yang menyenangkan</p>
+    </footer>
+  </div>
+
+  <div class="feedback-toast" id="feedbackToast" aria-hidden="true">
+    <span class="feedback-toast-icon" id="feedbackToastIcon">✓</span>
+    <span class="feedback-toast-copy">
+      <strong id="feedbackToastTitle">Tepat sekali!</strong>
+      <span id="feedbackToastDetail">+1 bintang</span>
+    </span>
+  </div>
+
+  <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+  <noscript>
+    <p class="noscript">Permainan ini membutuhkan JavaScript. Aktifkan JavaScript untuk memutar roda.</p>
+  </noscript>
+</body>
+</html>

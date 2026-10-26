@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Anak memasuki masjid sambil berdoa">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c9e7f7"/>
+      <stop offset=".58" stop-color="#ffedc4"/>
+      <stop offset="1" stop-color="#ffd4a2"/>
+    </linearGradient>
+    <linearGradient id="dome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#73b394"/>
+      <stop offset="1" stop-color="#3f8d6b"/>
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff4d8"/>
+      <stop offset="1" stop-color="#f2d8ac"/>
+    </linearGradient>
+    <linearGradient id="door" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe2a0"/>
+      <stop offset="1" stop-color="#e9a85c"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="0" flood-color="#4c2c1c" flood-opacity=".13"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#sky)"/>
+  <circle cx="337" cy="57" r="30" fill="#ffde82" opacity=".9"/>
+  <g fill="#fffdf5" opacity=".56">
+    <path d="M48 74c2-12 18-15 24-5 9-4 20 2 18 12H48c-6 0-6-6 0-7Z"/>
+    <path d="M266 45c2-9 14-11 19-4 6-3 15 2 13 9h-32c-4 0-4-5 0-5Z"/>
+  </g>
+  <path d="M323 22c-14 4-22 18-18 31 3 11 13 18 24 18-10 8-25 9-36 1-13-10-16-28-7-42 9-13 24-18 37-8Z" fill="#ffe28a" stroke="#5c3a28" stroke-width="2.5" stroke-linejoin="round"/>
+  <g fill="#fff6d7">
+    <path d="m54 34 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/>
+    <path d="m111 80 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" opacity=".8"/>
+    <path d="m299 95 2 4 4 2-4 2-2 4-2-4-4-2 4-2Z" opacity=".8"/>
+  </g>
+
+  <path d="M0 237c85-13 174-16 270-5 48 6 91 4 130-4v72H0Z" fill="#e7cfa3" stroke="#5c3a28" stroke-width="3"/>
+  <path d="M0 267c83-8 163-4 245 1 62 4 110 2 155-3v35H0Z" fill="#d5b87e"/>
+
+  <g filter="url(#soft)">
+    <path d="M84 165c-3-26 16-45 38-45h96c23 0 41 19 38 45l-6 77H90Z" fill="url(#wall)" stroke="#5c3a28" stroke-width="3"/>
+    <path d="M112 122c0-39 17-63 44-63 28 0 46 24 46 63" fill="url(#dome)" stroke="#5c3a28" stroke-width="3"/>
+    <path d="M156 58c-1-11 6-18 14-20-7 6-7 13-4 20" fill="#f8cc61" stroke="#5c3a28" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M134 102c9-14 20-20 33-18 14 2 22 7 28 18" fill="none" stroke="#2f6f4f" stroke-width="2.5" opacity=".7"/>
+    <path d="M242 97c0-9 6-15 14-15s14 6 14 15v70h-28Z" fill="#f4d7ab" stroke="#5c3a28" stroke-width="2.8"/>
+    <path d="M249 81c0-12 3-20 7-28 4 8 7 16 7 28" fill="#f8cc61" stroke="#5c3a28" stroke-width="2.4"/>
+    <rect x="252" y="107" width="8" height="24" rx="4" fill="#9dd5ef" stroke="#5c3a28" stroke-width="1.8"/>
+    <rect x="252" y="141" width="8" height="16" rx="4" fill="#9dd5ef" stroke="#5c3a28" stroke-width="1.8"/>
+    <path d="M145 188c0-23 13-38 34-38s35 15 35 38v54h-69Z" fill="url(#door)" stroke="#5c3a28" stroke-width="3"/>
+    <path d="M158 189c0-14 9-24 21-24s21 10 21 24v53h-42Z" fill="#fff3cc" stroke="#5c3a28" stroke-width="2"/>
+    <path d="M107 180c0-12 7-20 17-20s17 8 17 20v32h-34Z" fill="#9dd5ef" stroke="#5c3a28" stroke-width="2.5"/>
+    <path d="M202 180c0-12 7-20 17-20s17 8 17 20v32h-34Z" fill="#9dd5ef" stroke="#5c3a28" stroke-width="2.5"/>
+    <path d="M131 145c8-8 17-12 26-12 10 0 18 4 25 12" fill="none" stroke="#c59b5c" stroke-width="2.2"/>
+    <path d="M122 160c9-5 17-6 25-5M213 160c-8-5-16-6-24-5" fill="none" stroke="#c59b5c" stroke-width="2" opacity=".8"/>
+    <path d="M104 203h41M215 203h41" stroke="#5c3a28" stroke-width="2" opacity=".28"/>
+    <path d="M92 242h190v8H92Z" fill="#b98b58" stroke="#5c3a28" stroke-width="2.5"/>
+    <path d="M103 252h168v6H103Z" fill="#c99b63" stroke="#5c3a28" stroke-width="2"/>
+  </g>
+
+  <g>
+    <path d="M78 181c-3-13 3-25 13-31-3 10 0 17 6 25 4-9 12-14 22-12-6 7-7 13-5 21" fill="#78b774" stroke="#5c3a28" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M75 190h37l-5 23H80Z" fill="#d98b5e" stroke="#5c3a28" stroke-width="2.5"/>
+    <circle cx="326" cy="227" r="18" fill="#a9ddbf" stroke="#5c3a28" stroke-width="2.5"/>
+    <path d="M318 225c4-7 12-8 17-3-2 7-8 10-17 9" fill="#8bc889"/>
+  </g>
+
+  <g transform="translate(200 224) scale(1.02)" stroke="#5c3a28" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft)">
+    <path d="M-19 75v22" stroke="#355f57" stroke-width="16"/>
+    <path d="M17 75v22" stroke="#355f57" stroke-width="16"/>
+    <path d="M-28 99h20M17 99h20" stroke="#4c2c1c" stroke-width="11"/>
+    <rect x="-35" y="18" width="70" height="70" rx="25" fill="#4f9b74"/>
+    <path d="M-31 34c-19-6-29-22-25-42" fill="none" stroke="#4f9b74" stroke-width="13"/>
+    <path d="M31 34c19-6 29-22 25-42" fill="none" stroke="#4f9b74" stroke-width="13"/>
+    <circle cx="-58" cy="-12" r="8" fill="#edbc8c"/>
+    <circle cx="58" cy="-12" r="8" fill="#edbc8c"/>
+    <path d="M-63-20c-3-4-3-8 0-11M63-20c3-4 3-8 0-11" fill="none" stroke="#5c3a28" stroke-width="2.2"/>
+    <circle cy="0" r="30" fill="#edbc8c"/>
+    <circle cx="-29" cy="2" r="5" fill="#edbc8c"/>
+    <circle cx="29" cy="2" r="5" fill="#edbc8c"/>
+    <path d="M-30 -7Q-29 -31 0 -32 29 -31 30 -7l-1 5Q0 -13 -29 -2Z" fill="#fffaf0"/>
+    <path d="M-30 -7Q0 -17 30 -7v7Q0 -9 -30 0Z" fill="#4f9b74"/>
+    <path d="M-25 -4c-4 4-5 9-4 14M25 -4c4 4 5 9 4 14" fill="none" stroke="#4c2c1c" stroke-width="3"/>
+    <path d="M-4 18c4 0 8 0 12 0" fill="none" stroke="#c58b62" stroke-width="2" opacity=".65"/>
+  </g>
+
+  <g fill="#f8cc61" stroke="#5c3a28" stroke-width="1.3">
+    <path d="m61 118 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/>
+    <path d="m346 164 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/>
+  </g>
+  <g fill="#f4a7bc">
+    <circle cx="72" cy="273" r="4"/>
+    <circle cx="87" cy="267" r="3"/>
+    <circle cx="350" cy="276" r="4"/>
+  </g>
+  <g fill="none" stroke="#8bc889" stroke-width="4" stroke-linecap="round">
+    <path d="M49 286c-2-12 0-18 5-26M55 286c5-8 11-12 18-13M342 287c0-11-3-18-8-24M347 287c5-8 11-11 17-12"/>
+  </g>
+</svg>

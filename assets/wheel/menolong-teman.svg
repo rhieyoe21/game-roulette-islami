@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Anak menolong dengan tangan terulur">
+  <g stroke="#5c3a28" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M43 111c0-27 10-47 28-47s28 20 28 47Z" fill="#4f9b74"/>
+    <path d="M66 65h10l-5 11Z" fill="#fff8e8" stroke-width="2"/>
+    <path d="M48 77c-8 5-14 12-17 20" fill="none" stroke="#4f9b74" stroke-width="12"/>
+    <path d="M94 77c6 8 8 17 7 26" fill="none" stroke="#4f9b74" stroke-width="12"/>
+    <circle cx="27" cy="100" r="7" fill="#edbc8c"/>
+    <circle cx="101" cy="105" r="6.5" fill="#edbc8c"/>
+    <path d="M29 100c-5-3-9-8-10-14" fill="none" stroke="#edbc8c" stroke-width="7"/>
+    <path d="M22 82c-4-2-7-1-9 2M19 87c-4 0-7 2-8 5" fill="none" stroke="#edbc8c" stroke-width="5"/>
+    <circle cx="70" cy="41" r="22" fill="#edbc8c"/>
+    <circle cx="49" cy="43" r="4" fill="#edbc8c" stroke-width="2"/>
+    <circle cx="91" cy="43" r="4" fill="#edbc8c" stroke-width="2"/>
+    <path d="M49 36C49 16 58 13 70 13s22 3 22 23l-1 4c-14-4-28-4-42 0Z" fill="#fffaf0"/>
+    <path d="M49 36c14-5 29-5 43 0v5c-15-4-29-4-43 0Z" fill="#4f9b74"/>
+    <path d="M50 37c-3 4-4 8-3 12M90 37c3 4 4 8 3 12" fill="none" stroke-width="2.8"/>
+    <circle cx="62" cy="44" r="2.1" fill="#4c2c1c" stroke="none"/>
+    <circle cx="80" cy="44" r="2.1" fill="#4c2c1c" stroke="none"/>
+    <path d="M64 52q7 6 14 0" fill="none" stroke-width="2.3"/>
+    <circle cx="54" cy="50" r="3.5" fill="#ef9f8d" opacity=".45" stroke="none"/>
+    <circle cx="87" cy="50" r="3.5" fill="#ef9f8d" opacity=".45" stroke="none"/>
+    <g transform="translate(34 107) rotate(-10)">
+      <rect x="-19" y="-8" width="38" height="17" rx="3" fill="#f8cc61"/>
+      <path d="M-19 1h38" stroke-width="2"/>
+      <path d="M-13-5h26" stroke="#fff8e8" stroke-width="2"/>
+    </g>
+  </g>
+  <path d="M96 22c-7-8-19-2-16 7 2 6 11 10 16 14 5-4 14-8 16-14 3-9-9-15-16-7Z" fill="#f08d8d" stroke="#5c3a28" stroke-width="2.2"/>
+  <path d="m18 31 2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" fill="#f8cc61" stroke="#5c3a28" stroke-width="1.3"/>
+</svg>

@@ -180,6 +180,52 @@
     </footer>
   </div>
 
+  <dialog class="intro-modal" id="introModal" aria-labelledby="introTitle" aria-describedby="introDescription">
+    <div class="intro-card">
+      <div class="intro-header">
+        <div class="intro-mark" aria-hidden="true">★</div>
+        <div class="intro-copy">
+          <p class="intro-kicker">Sebelum bermain</p>
+          <h2 class="intro-title" id="introTitle">Video Pendahuluan</h2>
+          <p class="intro-description" id="introDescription">Tonton video singkat ini dulu, ya. Setelah selesai, kamu bisa mulai memutar roda kebaikan.</p>
+        </div>
+      </div>
+
+      <div class="intro-video-frame">
+        <video class="intro-video" id="introVideo" controls playsinline preload="metadata" muted width="1024" height="576" aria-label="Video pendahuluan Roda Kebaikan Islami">
+          Browser kamu belum mendukung pemutaran video.
+        </video>
+      </div>
+
+      <div class="intro-toolbar">
+        <button class="intro-sound-toggle" id="introSoundToggle" type="button" aria-pressed="false" aria-label="Nyalakan suara video">
+          <span class="intro-sound-icon" aria-hidden="true">
+            <svg class="intro-sound-on" viewBox="0 0 24 24" role="presentation" hidden>
+              <path d="M4 9h4l5-4v14l-5-4H4Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <svg class="intro-sound-off" viewBox="0 0 24 24" role="presentation">
+              <path d="M4 9h4l5-4v14l-5-4H4Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="m16 9 5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="intro-sound-label" id="introSoundLabel">Nyalakan suara</span>
+        </button>
+        <p class="intro-status" id="introStatus" role="status" aria-live="polite">Video diputar tanpa suara.</p>
+      </div>
+
+      <div class="intro-actions">
+        <button class="intro-skip-button" id="introSkipButton" type="button">Lewati video</button>
+        <button class="primary-button intro-start-button" id="introStartButton" type="button" disabled>
+          <span>Mulai Bermain</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+      <p class="intro-note">Tombol mulai aktif setelah video selesai. Kamu juga bisa melewati video.</p>
+    </div>
+  </dialog>
+
   <div class="feedback-toast" id="feedbackToast" aria-hidden="true">
     <span class="feedback-toast-icon" id="feedbackToastIcon">✓</span>
     <span class="feedback-toast-copy">

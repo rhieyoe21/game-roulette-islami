@@ -5,7 +5,7 @@
 
 # Referensi gambar hanya untuk proses generate lokal
 assets/reference/
-
+assets/video/*.mp4
 # Artefak Python
 __pycache__/
 *.pyc

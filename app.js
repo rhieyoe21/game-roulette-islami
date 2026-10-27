@@ -200,6 +200,8 @@
   const LABEL_RADIUS_PERCENT = 30.4;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const SOUND_PREFERENCE_KEY = "roda-kebaikan-sound";
+  const INTRO_VIDEO_SRC = "assets/video/video-pendahuluan.mp4";
+  const INTRO_CHECK_TIMEOUT = 5000;
 
   const wheel = document.getElementById("wheel");
   const wheelDisc = document.getElementById("wheelDisc");
@@ -219,6 +221,15 @@
   const feedbackToastIcon = document.getElementById("feedbackToastIcon");
   const feedbackToastTitle = document.getElementById("feedbackToastTitle");
   const feedbackToastDetail = document.getElementById("feedbackToastDetail");
+  const introModal = document.getElementById("introModal");
+  const introVideo = document.getElementById("introVideo");
+  const introSoundToggle = document.getElementById("introSoundToggle");
+  const introSoundLabel = document.getElementById("introSoundLabel");
+  const introSoundOn = introSoundToggle.querySelector(".intro-sound-on");
+  const introSoundOff = introSoundToggle.querySelector(".intro-sound-off");
+  const introStatus = document.getElementById("introStatus");
+  const introSkipButton = document.getElementById("introSkipButton");
+  const introStartButton = document.getElementById("introStartButton");
 
   const idleState = document.getElementById("idleState");
   const idleTitle = idleState.querySelector(".idle-title");
@@ -448,6 +459,151 @@
     window.setTimeout(() => {
       liveStatus.textContent = message;
     }, 30);
+  }
+
+  async function fetchWithTimeout(url, options) {
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), INTRO_CHECK_TIMEOUT);
+
+    try {
+      return await fetch(url, { ...options, signal: controller.signal });
+    } finally {
+      window.clearTimeout(timer);
+    }
+  }
+
+  function probeIntroVideo() {
+    return new Promise((resolve) => {
+      const probe = document.createElement("video");
+      let settled = false;
+      const timer = window.setTimeout(() => settle(false), INTRO_CHECK_TIMEOUT);
+
+      function settle(available) {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        window.clearTimeout(timer);
+        probe.removeAttribute("src");
+        probe.load();
+        resolve(available);
+      }
+
+      probe.preload = "metadata";
+      probe.muted = true;
+      probe.addEventListener("loadedmetadata", () => settle(true), { once: true });
+      probe.addEventListener("error", () => settle(false), { once: true });
+      probe.src = INTRO_VIDEO_SRC;
+    });
+  }
+
+  async function introVideoExists() {
+    try {
+      const response = await fetchWithTimeout(INTRO_VIDEO_SRC, {
+        method: "HEAD",
+        cache: "no-store"
+      });
+
+      if (response.ok) {
+        return true;
+      }
+
+      if (response.status !== 405 && response.status !== 501) {
+        return false;
+      }
+    } catch (error) {
+      if (error && error.name === "AbortError") {
+        return false;
+      }
+    }
+
+    return probeIntroVideo();
+  }
+
+  function syncIntroSoundState() {
+    const soundOn = !introVideo.muted;
+
+    introSoundToggle.setAttribute("aria-pressed", String(soundOn));
+    introSoundToggle.setAttribute(
+      "aria-label",
+      soundOn ? "Matikan suara video" : "Nyalakan suara video"
+    );
+    introSoundLabel.textContent = soundOn ? "Matikan suara" : "Nyalakan suara";
+    introSoundOn.hidden = !soundOn;
+    introSoundOff.hidden = soundOn;
+  }
+
+  function playIntroVideo() {
+    let playback;
+
+    try {
+      playback = introVideo.play();
+    } catch {
+      introStatus.textContent = "Tekan tombol putar pada video untuk mulai menonton.";
+      return;
+    }
+
+    if (!playback || typeof playback.catch !== "function") {
+      return;
+    }
+
+    playback.catch(() => {
+      if (!introModal.open) {
+        return;
+      }
+      introStatus.textContent = "Tekan tombol putar pada video untuk mulai menonton.";
+    });
+  }
+
+  function openIntroModal() {
+    if (!introModal || typeof introModal.showModal !== "function" || introModal.open) {
+      return;
+    }
+
+    introVideo.muted = true;
+    introStartButton.disabled = true;
+    syncIntroSoundState();
+    introStatus.textContent = "Video diputar tanpa suara.";
+    document.body.classList.add("is-intro-open");
+    introModal.showModal();
+    introSkipButton.focus({ preventScroll: true });
+    playIntroVideo();
+  }
+
+  function closeIntroModal(message) {
+    if (!introModal.open) {
+      return;
+    }
+
+    introVideo.pause();
+    introVideo.removeAttribute("src");
+    introVideo.load();
+    introModal.close();
+    document.body.classList.remove("is-intro-open");
+
+    if (message) {
+      announce(message);
+    }
+
+    window.requestAnimationFrame(() => {
+      spinButton.focus({ preventScroll: true });
+    });
+  }
+
+  async function setupIntroModal() {
+    if (!introModal || typeof introModal.showModal !== "function") {
+      return;
+    }
+
+    const available = await introVideoExists();
+
+    if (!available) {
+      return;
+    }
+
+    introVideo.src = INTRO_VIDEO_SRC;
+    openIntroModal();
   }
 
   function setSpinButton(mode) {
@@ -912,6 +1068,70 @@
     }
   });
 
+  introVideo.addEventListener("ended", () => {
+    if (!introModal.open) {
+      return;
+    }
+
+    introStartButton.disabled = false;
+    introStatus.textContent = "Video selesai. Kamu siap bermain!";
+    introStartButton.focus({ preventScroll: true });
+  });
+
+  introVideo.addEventListener("error", () => {
+    if (!introModal.open) {
+      return;
+    }
+
+    closeIntroModal("Video tidak dapat diputar. Permainan dimulai.");
+  });
+
+  introVideo.addEventListener("volumechange", () => {
+    syncIntroSoundState();
+  });
+
+  introVideo.addEventListener("play", () => {
+    if (!introModal.open || introVideo.ended) {
+      return;
+    }
+
+    introStatus.textContent = introVideo.muted
+      ? "Video diputar tanpa suara."
+      : "Suara video aktif.";
+  });
+
+  introSoundToggle.addEventListener("click", () => {
+    introVideo.muted = !introVideo.muted;
+    syncIntroSoundState();
+    introStatus.textContent = introVideo.muted
+      ? "Video diputar tanpa suara."
+      : "Suara video aktif.";
+
+    if (introVideo.paused && introVideo.currentTime < 0.5 && !introVideo.ended) {
+      playIntroVideo();
+    }
+  });
+
+  introSkipButton.addEventListener("click", () => {
+    closeIntroModal("Video pendahuluan dilewati. Selamat bermain!");
+  });
+
+  introStartButton.addEventListener("click", () => {
+    if (introStartButton.disabled) {
+      return;
+    }
+
+    closeIntroModal("Selamat bermain! Tekan tombol putar untuk memulai.");
+  });
+
+  introModal.addEventListener("cancel", (event) => {
+    event.preventDefault();
+  });
+
+  introModal.addEventListener("close", () => {
+    document.body.classList.remove("is-intro-open");
+  });
+
   prefersReducedMotion.addEventListener?.("change", () => {
     syncMotionPreference();
     if (prefersReducedMotion.matches) {
@@ -927,4 +1147,6 @@
     announceChange: false
   });
   setSpinButton("idle");
+  syncIntroSoundState();
+  setupIntroModal();
 })();

@@ -4,6 +4,9 @@ Game edukasi Islami interaktif untuk anak. Pemain memutar roda kebaikan, memilih
 
 ## Fitur
 
+- Modal video pendahuluan dengan autoplay tanpa suara, kontrol native, dan tombol nyalakan suara.
+- Modal hanya tampil bila `assets/video/video-pendahuluan.mp4` tersedia; tanpa file tersebut permainan langsung dapat dimainkan.
+- Tombol lewati video selalu tersedia, sedangkan tombol mulai aktif setelah video selesai.
 - Roda dengan tujuh kondisi kebaikan dan karakter ilustrasi yang berbeda dari gambar kartu.
 - Tiga kartu situasi langsung terbuka agar pemain bisa membaca dan memilih.
 - Panel kartu netral dan seragam, sehingga warna roda tidak membocorkan jawaban.
@@ -19,12 +22,13 @@ Game edukasi Islami interaktif untuk anak. Pemain memutar roda kebaikan, memilih
 
 ## Cara Bermain
 
-1. Tekan tombol **Putar** di tengah roda.
-2. Setelah roda berhenti, baca tiga situasi yang tersedia.
-3. Pilih kartu yang cocok dengan kondisi dari roda.
-4. Jawaban salah menampilkan nama kondisi pada kartu tersebut; coba kartu lain.
-5. Jawaban benar menampilkan nama kondisi pada semua kartu dan menambah satu bintang.
-6. Gunakan **Reset** untuk menghapus bintang dan mengulang dari awal.
+1. Tonton video pendahuluan, nyalakan suara bila perlu, lalu tekan **Mulai Bermain** atau **Lewati video**.
+2. Tekan tombol **Putar** di tengah roda.
+3. Setelah roda berhenti, baca tiga situasi yang tersedia.
+4. Pilih kartu yang cocok dengan kondisi dari roda.
+5. Jawaban salah menampilkan nama kondisi pada kartu tersebut; coba kartu lain.
+6. Jawaban benar menampilkan nama kondisi pada semua kartu dan menambah satu bintang.
+7. Gunakan **Reset** untuk menghapus bintang dan mengulang dari awal.
 
 ## Pasangan Kondisi dan Situasi
 
@@ -51,9 +55,10 @@ Game edukasi Islami interaktif untuk anak. Pemain memutar roda kebaikan, memilih
 .
 ├── index.html                 # Struktur halaman
 ├── styles.css                 # Tema, roda, kartu, animasi, responsif
-├── app.js                     # Data permainan, roda, kartu, suara, reset
+├── app.js                     # Data permainan, modal video, roda, kartu, suara, reset
 ├── assets/
 │   ├── cards/                 # Gambar kartu WebP + fallback SVG
+│   ├── video/                 # Video pendahuluan (opsional)
 │   └── wheel/                 # Karakter roda transparan + fallback SVG
 ├── tools/
 │   └── generate_assets.py     # Generator aset kartu dan karakter roda
@@ -76,6 +81,8 @@ Tidak diperlukan `npm install` atau proses build.
 ## Aset AI
 
 Aset kartu dan karakter roda sudah tersedia sebagai WebP. Masing-masing memiliki fallback SVG agar permainan tetap berjalan bila aset raster tidak tersedia.
+
+Video pendahuluan bersifat opsional. Letakkan file `video-pendahuluan.mp4` di `assets/video/` agar modal video tampil; jika file tidak ada, permainan langsung dimulai tanpa modal.
 
 ### Regenerate Aset
 
@@ -116,6 +123,9 @@ python -m py_compile tools/generate_assets.py
 
 Pemeriksaan manual yang disarankan:
 
+- buka halaman dengan file video tersedia dan pastikan modal tampil, autoplay tanpa suara, serta tombol mulai aktif setelah video selesai;
+- hapus atau ganti nama file video sementara, lalu pastikan modal tidak tampil dan permainan langsung dapat dimainkan;
+- uji tombol lewati, tombol suara, dan fokus keyboard di dalam modal;
 - putar roda dan pastikan hasil selalu cocok dengan segmen yang ditunjuk;
 - uji jawaban salah lalu benar;
 - pastikan nama kondisi hanya muncul sesuai aturan;
